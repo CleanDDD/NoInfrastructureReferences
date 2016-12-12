@@ -1,20 +1,18 @@
 using Core.Interfaces;
+using Infrastructure.Data;
 using StructureMap.Configuration.DSL;
 using StructureMap.Graph;
 
-namespace CleanGuestbookMvc5.DependencyResolution {
-	
-    public class DefaultRegistry : Registry {
-        public DefaultRegistry() {
+namespace Infrastructure {
+    public class InfrastructureRegistry : Registry {
+        public InfrastructureRegistry() {
             Scan(
                 scan => {
                     scan.TheCallingAssembly();
                     scan.AssemblyContainingType<IGuestbookRepository>(); // Core
-                    scan.Assembly("Infrastructure"); // the Infrastructure DLL
                     scan.WithDefaultConventions();
-					scan.With(new ControllerConvention());
-                    scan.LookForRegistries(); // find and run other registries
                 });
+            For<IGuestbookRepository>().Use<InMemoryGuestbookRepository>();
         }
     }
 }

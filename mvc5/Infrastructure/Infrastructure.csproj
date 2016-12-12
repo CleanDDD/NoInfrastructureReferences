@@ -49,11 +49,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data\InMemoryGuestbookRepository.cs" />
-    <Compile Include="DefaultRegistry.cs" />
+    <Compile Include="InfrastructureRegistry.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Core\Core.csproj">
+    <ProjectReference Include="..\Core\Core.csproj">
       <Project>{c5e46b2e-6d35-4bcb-a54b-fcb8f5ac3943}</Project>
       <Name>Core</Name>
     </ProjectReference>
